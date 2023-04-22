@@ -73,5 +73,24 @@ namespace ContactsApp.View
         {
             e.Handled = true;
         }
+
+        private void RightPanel_HelpRequested(object sender, HelpEventArgs hlpevent)
+        {
+            var form = new AboutForm();
+            form.ShowDialog();
+        }
+
+        private void CloseBDNoteButton_Click(object sender, EventArgs e)
+        {
+            NotePanel.Visible = false;
+        }
+        private void MainForm_HelpRequested(object sender, HelpEventArgs hlpevent)
+        {
+            if(!Application.OpenForms.OfType<AboutForm>().Any())
+            {
+                var form = new AboutForm();
+                form.ShowDialog();
+            }
+        }
     }
 }

@@ -40,7 +40,7 @@
             ContactsListBox = new ListBox();
             RightPanel = new Panel();
             NotePanel = new Panel();
-            CloseBDNoteButton = new Button();
+            CloseBDNoteButton = new PictureBox();
             NotedNamesLabel = new Label();
             TodayIsBirthdayOfLabel = new Label();
             NotePictureBox = new PictureBox();
@@ -63,6 +63,7 @@
             ((System.ComponentModel.ISupportInitialize)AddButton).BeginInit();
             RightPanel.SuspendLayout();
             NotePanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)CloseBDNoteButton).BeginInit();
             ((System.ComponentModel.ISupportInitialize)NotePictureBox).BeginInit();
             ((System.ComponentModel.ISupportInitialize)PhotoPictureBox).BeginInit();
             SuspendLayout();
@@ -168,7 +169,7 @@
             FindTextBox.Location = new Point(42, 3);
             FindTextBox.Name = "FindTextBox";
             FindTextBox.Size = new Size(199, 23);
-            FindTextBox.TabIndex = 1;
+            FindTextBox.TabIndex = 0;
             // 
             // ContactsListBox
             // 
@@ -217,15 +218,13 @@
             // 
             // CloseBDNoteButton
             // 
-            CloseBDNoteButton.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            CloseBDNoteButton.FlatAppearance.BorderSize = 0;
-            CloseBDNoteButton.FlatStyle = FlatStyle.Flat;
             CloseBDNoteButton.Image = Properties.Resources.close_32x32;
             CloseBDNoteButton.Location = new Point(503, 3);
             CloseBDNoteButton.Name = "CloseBDNoteButton";
             CloseBDNoteButton.Size = new Size(32, 32);
-            CloseBDNoteButton.TabIndex = 0;
-            CloseBDNoteButton.UseVisualStyleBackColor = true;
+            CloseBDNoteButton.TabIndex = 3;
+            CloseBDNoteButton.TabStop = false;
+            CloseBDNoteButton.Click += CloseBDNoteButton_Click;
             // 
             // NotedNamesLabel
             // 
@@ -371,6 +370,7 @@
             Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "MainForm";
             Text = "ContactsApp";
+            HelpRequested += MainForm_HelpRequested;
             MainTableLayoutPanel.ResumeLayout(false);
             LeftPanel.ResumeLayout(false);
             LeftPanel.PerformLayout();
@@ -382,6 +382,7 @@
             RightPanel.PerformLayout();
             NotePanel.ResumeLayout(false);
             NotePanel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)CloseBDNoteButton).EndInit();
             ((System.ComponentModel.ISupportInitialize)NotePictureBox).EndInit();
             ((System.ComponentModel.ISupportInitialize)PhotoPictureBox).EndInit();
             ResumeLayout(false);
@@ -411,9 +412,9 @@
         private Label NotedNamesLabel;
         private Label TodayIsBirthdayOfLabel;
         private PictureBox NotePictureBox;
-        private Button CloseBDNoteButton;
         private PictureBox RemoveButton;
         private PictureBox EditButton;
         private PictureBox AddButton;
+        private PictureBox CloseBDNoteButton;
     }
 }

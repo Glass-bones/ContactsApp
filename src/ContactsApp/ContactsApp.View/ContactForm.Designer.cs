@@ -51,6 +51,7 @@
             // VKTextBox
             // 
             VKTextBox.Location = new Point(118, 257);
+            VKTextBox.MaxLength = 50;
             VKTextBox.Name = "VKTextBox";
             VKTextBox.Size = new Size(180, 23);
             VKTextBox.TabIndex = 21;
@@ -78,10 +79,12 @@
             // PhoneTextBox
             // 
             PhoneTextBox.Location = new Point(118, 149);
+            PhoneTextBox.MaxLength = 30;
             PhoneTextBox.Name = "PhoneTextBox";
             PhoneTextBox.Size = new Size(180, 23);
             PhoneTextBox.TabIndex = 17;
             PhoneTextBox.Text = "7 (000) 000-00-00";
+            PhoneTextBox.TextChanged += PhoneTextBox_TextChanged;
             // 
             // PhoneLabel
             // 
@@ -97,6 +100,7 @@
             // 
             EmailTextBox.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             EmailTextBox.Location = new Point(118, 95);
+            EmailTextBox.MaxLength = 100;
             EmailTextBox.Name = "EmailTextBox";
             EmailTextBox.Size = new Size(394, 23);
             EmailTextBox.TabIndex = 15;
@@ -116,10 +120,12 @@
             // 
             FullNameTextBox.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             FullNameTextBox.Location = new Point(118, 41);
+            FullNameTextBox.MaxLength = 100;
             FullNameTextBox.Name = "FullNameTextBox";
             FullNameTextBox.Size = new Size(394, 23);
             FullNameTextBox.TabIndex = 13;
             FullNameTextBox.Text = "Солмир Джафарович";
+            FullNameTextBox.TextChanged += FullNameTextBox_TextChanged;
             // 
             // NameLabel
             // 
