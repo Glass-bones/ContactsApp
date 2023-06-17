@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace ContactsApp.Model
 {
-    internal class Contact
+    public class Contact
     {
         private string FullName;
         private string Email;

@@ -137,6 +137,7 @@
             RemoveButton.SizeMode = PictureBoxSizeMode.CenterImage;
             RemoveButton.TabIndex = 2;
             RemoveButton.TabStop = false;
+            RemoveButton.Click += RemoveButton_Click;
             RemoveButton.MouseEnter += RemoveButton_MouseEnter;
             RemoveButton.MouseLeave += RemoveButton_MouseLeave;
             // 
@@ -180,8 +181,10 @@
             ContactsListBox.Items.AddRange(new object[] { "Астрал", "Дейрмиф", "Жозефина", "Нила", "Ризза", "Серена", "Теодор", "Торосар", "Фафнер", "Халон" });
             ContactsListBox.Location = new Point(3, 32);
             ContactsListBox.Name = "ContactsListBox";
+            ContactsListBox.SelectionMode = SelectionMode.MultiSimple;
             ContactsListBox.Size = new Size(238, 377);
             ContactsListBox.TabIndex = 0;
+            ContactsListBox.MouseDown += ContactsListBox_MouseDown;
             // 
             // RightPanel
             // 
@@ -299,7 +302,7 @@
             PhoneTextBox.Name = "PhoneTextBox";
             PhoneTextBox.Size = new Size(180, 23);
             PhoneTextBox.TabIndex = 6;
-            PhoneTextBox.Text = "7 (000) 000-00-00";
+            PhoneTextBox.Text = "+7 (000) 000-00-00";
             PhoneTextBox.KeyPress += PhoneTextBox_KeyPress;
             // 
             // PhoneLabel
@@ -371,6 +374,8 @@
             Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "MainForm";
             Text = "ContactsApp";
+            FormClosing += MainForm_FormClosing;
+            Load += MainForm_Load;
             HelpRequested += MainForm_HelpRequested;
             MainTableLayoutPanel.ResumeLayout(false);
             LeftPanel.ResumeLayout(false);

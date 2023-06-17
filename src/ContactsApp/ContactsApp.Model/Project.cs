@@ -8,13 +8,13 @@ using System.Threading.Tasks;
 
 namespace ContactsApp.Model
 {
-    internal class Project
+    public class Project
     {
-        private List<Contact> Array=new List<Contact>;
+        private List<Contact> Array;
 
         public Contact GetElement(int index)
         {
-            if (index < 0 || index >= this.GetCount()) return;
+            if (index < 0 || index >= this.GetCount()) return null;
             return this.Array.ElementAt(index);
         }
 
@@ -27,6 +27,13 @@ namespace ContactsApp.Model
         {
             if (index < 0 || index >= this.GetCount()) return;
             this.Array[index]=contact;
+        }
+
+        public void AddElement(Contact contact) 
+        { 
+            if (contact == null) return;
+            if (this.Array==null) this.Array = new List<Contact>();
+            this.Array.Add(contact); 
         }
 
         public void Sort(int low,int high)
@@ -42,29 +49,29 @@ namespace ContactsApp.Model
 
         public int Partition(int low, int high)
         {
-            string pivot = this->GetElement(high).GetFullName();
+            string pivot = this.GetElement(high).GetFullName();
             int i = low - 1;
-
+            Contact tmp;
             for (int j = low; j < high; j++)
             {
-                if (string.Compare(this->GetElement(j).GetFullName(), pivot) < 0)
+                if (string.Compare(this.GetElement(j).GetFullName(), pivot) < 0)
                 {
                     i++;
-                    Contact tmp = this->GetElement(i);
-                    this->SetElement((this->GetElement(j),i);
-                    this->SetElement(tmp, j);
+                    tmp = this.GetElement(i);
+                    this.SetElement(this.GetElement(j),i);
+                    this.SetElement(tmp, j);
                 }
             }
-            Contact tmp = this->GetElement(i);
-            this->SetElement((this->GetElement(j), i);
-            this->SetElement(tmp, j);
+            tmp = this.GetElement(i + 1);
+            this.SetElement(this.GetElement(high), i + 1);
+            this.SetElement(tmp, high);
             return i + 1;
         }
         //FindBirthdayContact и FindSubstring начинают поиск с start чтобы было возможно найти все подходящие контакты(например в цикле)
         public int FindBirthdayContact(int start)
         {
             if (start < 0 || start >= this.GetCount()) return -1;
-            for (int i=start,i<this.GetCount();i++)
+            for (int i=start; i<this.GetCount();i++)
             {
                 if(this.GetElement(i).GetBirthDate()==DateTime.Today)
                     return i;
@@ -75,12 +82,22 @@ namespace ContactsApp.Model
         public int FindSubstring(int start,string substring) 
         {
             if (start < 0 || start >= this.GetCount()) return -1;
-            for (int i = start, i< this.GetCount(); i++)
+            for (int i = start; i< this.GetCount(); i++)
             {
                 if (this.GetElement(i).GetFullName().Contains(substring))
                     return i;
             }
             return -1;
+        }
+        public void RemoveElement(int index)
+        {
+            if (this.Array != null && this.Array.Count > 0)
+                this.Array.RemoveAt(index);
+        }
+        public void RemoveElement()
+        {
+            if (this.Array != null && this.Array.Count > 0)
+                this.Array.RemoveAt(this.GetCount() - 1);
         }
     }
 }

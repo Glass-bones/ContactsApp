@@ -83,7 +83,7 @@
             PhoneTextBox.Name = "PhoneTextBox";
             PhoneTextBox.Size = new Size(180, 23);
             PhoneTextBox.TabIndex = 17;
-            PhoneTextBox.Text = "7 (000) 000-00-00";
+            PhoneTextBox.Text = "+7 (000) 000-00-00";
             PhoneTextBox.TextChanged += PhoneTextBox_TextChanged;
             // 
             // PhoneLabel
@@ -180,6 +180,7 @@
             // 
             // OkAddButton
             // 
+            OkAddButton.DialogResult = DialogResult.OK;
             OkAddButton.Location = new Point(356, 11);
             OkAddButton.Name = "OkAddButton";
             OkAddButton.Size = new Size(75, 23);
@@ -246,6 +247,6 @@
         private DateTimePicker dateTimePicker1;
         private Panel panel1;
         private Button CancelAddButton;
-        private Button OkAddButton;
+        public Button OkAddButton;
     }
 }
