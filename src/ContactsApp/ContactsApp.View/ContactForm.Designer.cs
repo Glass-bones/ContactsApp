@@ -218,6 +218,7 @@
             Controls.Add(NameLabel);
             Controls.Add(PhotoPictureBox);
             FormBorderStyle = FormBorderStyle.FixedSingle;
+            MaximizeBox = false;
             Name = "ContactForm";
             ShowIcon = false;
             StartPosition = FormStartPosition.CenterParent;

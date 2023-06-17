@@ -195,6 +195,7 @@
             Controls.Add(GitHubPresentLabel);
             Controls.Add(CopyrightTextBox);
             FormBorderStyle = FormBorderStyle.FixedSingle;
+            MaximizeBox = false;
             Name = "AboutForm";
             ShowIcon = false;
             panel1.ResumeLayout(false);

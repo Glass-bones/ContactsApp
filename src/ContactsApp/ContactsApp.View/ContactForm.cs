@@ -40,7 +40,7 @@ namespace ContactsApp.View
                 Close();
             else if (!Regex.IsMatch(PhoneTextBox.Text, "^((8|\\+7)[\\- ]?)?(\\(?\\d{3}\\)?[\\- ]?)?[\\d\\- ]{7,10}$"))
                 return;
-            else Close(); 
+            else Close();
         }
 
         private void CancelAddButton_Click(object sender, EventArgs e)

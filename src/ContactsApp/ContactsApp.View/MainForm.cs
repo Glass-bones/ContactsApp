@@ -86,7 +86,7 @@ namespace ContactsApp.View
         }
         private void MainForm_HelpRequested(object sender, HelpEventArgs hlpevent)
         {
-            if(!Application.OpenForms.OfType<AboutForm>().Any())
+            if (!Application.OpenForms.OfType<AboutForm>().Any())
             {
                 var form = new AboutForm();
                 form.ShowDialog();

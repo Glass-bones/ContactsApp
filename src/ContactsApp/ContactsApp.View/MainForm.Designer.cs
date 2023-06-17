@@ -218,6 +218,7 @@
             // 
             // CloseBDNoteButton
             // 
+            CloseBDNoteButton.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             CloseBDNoteButton.Image = Properties.Resources.close_32x32;
             CloseBDNoteButton.Location = new Point(503, 3);
             CloseBDNoteButton.Name = "CloseBDNoteButton";
