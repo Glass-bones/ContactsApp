@@ -106,7 +106,8 @@ namespace ContactsApp.View
             else return true;
         }
 
-        //тк эта форма - диалог, проверка на ошибки происходит только перед выходом, а не при нажатии кнопки
+        //тк эта форма - диалог, проверка на ошибки происходит только перед выходом,
+        //а не при нажатии кнопки ok
         private void ContactForm_FormClosing(object sender, FormClosingEventArgs e)
         {
             if (this.DialogResult == DialogResult.OK && !CheckFormOnErrors())
