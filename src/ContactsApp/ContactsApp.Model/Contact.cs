@@ -49,6 +49,7 @@ namespace ContactsApp.Model
             this.SetVK(vk);
             this.SetBirthDate(birthDate);
         }
+        
         public string GetFullName()
         { 
             return this.FullName; 

@@ -185,7 +185,11 @@ namespace ContactsApp.View
             FullNameTextBox.Text = _project.GetElement(index).GetFullName();
             EmailTextBox.Text = _project.GetElement(index).GetEmail();
             PhoneTextBox.Text = _project.GetElement(index).GetPhoneNumber();
-            DateOfBirthTextBox.Text = _project.GetElement(index).GetBirthDate().Day + "." + _project.GetElement(index).GetBirthDate().Month + "." + _project.GetElement(index).GetBirthDate().Year;
+            if (_project.GetElement(index).GetBirthDate().Day < 10) DateOfBirthTextBox.Text = "0";
+            else DateOfBirthTextBox.Text = "";
+            DateOfBirthTextBox.Text += _project.GetElement(index).GetBirthDate().Day + ".";
+            if (_project.GetElement(index).GetBirthDate().Month < 10) DateOfBirthTextBox.Text += "0";
+            DateOfBirthTextBox.Text += _project.GetElement(index).GetBirthDate().Month + "." + _project.GetElement(index).GetBirthDate().Year;
             VKTextBox.Text = _project.GetElement(index).GetVK();
         }
         private void ClearSelectedContact()

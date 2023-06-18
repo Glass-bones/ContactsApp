@@ -39,7 +39,7 @@
             NameLabel = new Label();
             PhotoPictureBox = new PictureBox();
             AddPhotoButton = new PictureBox();
-            dateTimePicker1 = new DateTimePicker();
+            BirthDateTimePicker = new DateTimePicker();
             panel1 = new Panel();
             OkAddButton = new Button();
             CancelAddButton = new Button();
@@ -50,11 +50,13 @@
             // 
             // VKTextBox
             // 
+            VKTextBox.BackColor = Color.White;
             VKTextBox.Location = new Point(118, 257);
             VKTextBox.MaxLength = 50;
             VKTextBox.Name = "VKTextBox";
             VKTextBox.Size = new Size(180, 23);
             VKTextBox.TabIndex = 21;
+            VKTextBox.TextChanged += VKTextBox_TextChanged;
             // 
             // VKLabel
             // 
@@ -78,6 +80,7 @@
             // 
             // PhoneTextBox
             // 
+            PhoneTextBox.BackColor = Color.White;
             PhoneTextBox.Location = new Point(118, 149);
             PhoneTextBox.MaxLength = 30;
             PhoneTextBox.Name = "PhoneTextBox";
@@ -99,12 +102,14 @@
             // EmailTextBox
             // 
             EmailTextBox.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            EmailTextBox.BackColor = Color.White;
             EmailTextBox.Location = new Point(118, 95);
             EmailTextBox.MaxLength = 100;
             EmailTextBox.Name = "EmailTextBox";
             EmailTextBox.Size = new Size(394, 23);
             EmailTextBox.TabIndex = 15;
             EmailTextBox.Text = "chain.lightning@no.mail";
+            EmailTextBox.TextChanged += EmailTextBox_TextChanged;
             // 
             // EmailLabel
             // 
@@ -119,6 +124,7 @@
             // FullNameTextBox
             // 
             FullNameTextBox.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            FullNameTextBox.BackColor = Color.White;
             FullNameTextBox.Location = new Point(118, 41);
             FullNameTextBox.MaxLength = 100;
             FullNameTextBox.Name = "FullNameTextBox";
@@ -159,12 +165,17 @@
             AddPhotoButton.MouseEnter += AddPhotoButton_MouseEnter;
             AddPhotoButton.MouseLeave += AddPhotoButton_MouseLeave;
             // 
-            // dateTimePicker1
+            // BirthDateTimePicker
             // 
-            dateTimePicker1.Location = new Point(118, 203);
-            dateTimePicker1.Name = "dateTimePicker1";
-            dateTimePicker1.Size = new Size(180, 23);
-            dateTimePicker1.TabIndex = 23;
+            BirthDateTimePicker.CalendarMonthBackground = Color.White;
+            BirthDateTimePicker.Format = DateTimePickerFormat.Short;
+            BirthDateTimePicker.Location = new Point(118, 203);
+            BirthDateTimePicker.MinDate = new DateTime(1900, 1, 1, 0, 0, 0, 0);
+            BirthDateTimePicker.Name = "BirthDateTimePicker";
+            BirthDateTimePicker.Size = new Size(180, 23);
+            BirthDateTimePicker.TabIndex = 23;
+            BirthDateTimePicker.Value = new DateTime(2023, 6, 18, 0, 0, 0, 0);
+            BirthDateTimePicker.ValueChanged += BirthDateTimePicker_ValueChanged;
             // 
             // panel1
             // 
@@ -187,7 +198,6 @@
             OkAddButton.TabIndex = 1;
             OkAddButton.Text = "OK";
             OkAddButton.UseVisualStyleBackColor = true;
-            OkAddButton.Click += OkAddButton_Click;
             // 
             // CancelAddButton
             // 
@@ -206,7 +216,7 @@
             BackColor = Color.White;
             ClientSize = new Size(524, 351);
             Controls.Add(panel1);
-            Controls.Add(dateTimePicker1);
+            Controls.Add(BirthDateTimePicker);
             Controls.Add(AddPhotoButton);
             Controls.Add(VKTextBox);
             Controls.Add(VKLabel);
@@ -223,6 +233,7 @@
             Name = "ContactForm";
             ShowIcon = false;
             StartPosition = FormStartPosition.CenterParent;
+            FormClosing += ContactForm_FormClosing;
             Load += ContactForm_Load;
             ((System.ComponentModel.ISupportInitialize)PhotoPictureBox).EndInit();
             ((System.ComponentModel.ISupportInitialize)AddPhotoButton).EndInit();
@@ -244,7 +255,7 @@
         private Label NameLabel;
         private PictureBox PhotoPictureBox;
         private PictureBox AddPhotoButton;
-        private DateTimePicker dateTimePicker1;
+        private DateTimePicker BirthDateTimePicker;
         private Panel panel1;
         private Button CancelAddButton;
         public Button OkAddButton;
