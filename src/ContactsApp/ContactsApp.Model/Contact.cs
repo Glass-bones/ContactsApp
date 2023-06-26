@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace ContactsApp.Model
 {
-    public class Contact
+    public class Contact:ICloneable
     {
         private string FullName;
         private string Email;
@@ -48,6 +48,11 @@ namespace ContactsApp.Model
             this.SetPhoneNumber(phoneNumber);
             this.SetVK(vk);
             this.SetBirthDate(birthDate);
+        }
+
+        public object Clone()
+        {
+            return new Contact(this.GetFullName(),this.GetEmail(), this.GetPhoneNumber(), this.GetVK(), this.GetBirthDate());
         }
         
         public string GetFullName()

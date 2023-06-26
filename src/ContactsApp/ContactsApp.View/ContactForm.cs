@@ -32,7 +32,8 @@ namespace ContactsApp.View
 
         private void ContactForm_Load(object sender, EventArgs e)
         {
-            _contact = new Contact("john Doe", "@no.mail", "+7 (000) 000-00-00", "", DateTime.Today);
+            if(_contact==null)
+                _contact = new Contact("john Doe", "@no.mail", "+7 (000) 000-00-00", "", DateTime.Today);
             BirthDateTimePicker.MaxDate = DateTime.Today;
             _phoneNumberError = "";
             UpdateForm();
@@ -104,6 +105,16 @@ namespace ContactsApp.View
                 return false;
             }
             else return true;
+        }
+
+        public Contact GetContact() 
+        { 
+            return _contact;
+        }
+
+        public void SetContact(Contact contact)
+        {
+            _contact = new Contact(contact.GetFullName(), contact.GetEmail(), contact.GetPhoneNumber(), contact.GetVK(), contact.GetBirthDate());
         }
 
         //тк эта форма - диалог, проверка на ошибки происходит только перед выходом,

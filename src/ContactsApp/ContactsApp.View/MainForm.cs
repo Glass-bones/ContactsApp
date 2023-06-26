@@ -17,9 +17,9 @@ namespace ContactsApp.View
             if (result == DialogResult.OK)
             {
                 AddRandomContact();
+                _project.AddElement(form.GetContact());
                 UpdateListBox();
             }
-
         }
 
         private void AddButton_MouseEnter(object sender, EventArgs e)
@@ -238,6 +238,26 @@ namespace ContactsApp.View
             DialogResult result = MessageBox.Show("Do you want to exit?", "Confirm Exit", MessageBoxButtons.YesNo);
             if (result == DialogResult.No)
                 e.Cancel = true;
+        }
+
+        private void EditContact(int index)
+        {
+            var form = new ContactForm();
+            form.SetContact(_project.GetElement(index));
+            DialogResult result = form.ShowDialog();
+            if (result == DialogResult.OK)
+            {
+                _project.RemoveElement(index);
+                _project.AddElement(form.GetContact());
+                UpdateListBox();
+                UpdateSelectedContact(index);
+            }
+        }
+
+        private void EditButton_Click(object sender, EventArgs e)
+        {
+            if(ContactsListBox.SelectedItems.Count > 0)
+                EditContact(ContactsListBox.SelectedIndex);
         }
     }
 }
