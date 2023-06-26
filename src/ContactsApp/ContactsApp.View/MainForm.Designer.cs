@@ -123,6 +123,7 @@
             EditButton.SizeMode = PictureBoxSizeMode.CenterImage;
             EditButton.TabIndex = 4;
             EditButton.TabStop = false;
+            EditButton.Click += EditButton_Click;
             EditButton.MouseEnter += EditButton_MouseEnter;
             EditButton.MouseLeave += EditButton_MouseLeave;
             // 
@@ -373,7 +374,7 @@
             Controls.Add(MainTableLayoutPanel);
             Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "MainForm";
-            Text = "ContactsApp";
+            Text = " ";
             FormClosing += MainForm_FormClosing;
             Load += MainForm_Load;
             HelpRequested += MainForm_HelpRequested;

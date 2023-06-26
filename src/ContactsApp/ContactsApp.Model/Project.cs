@@ -26,7 +26,7 @@ namespace ContactsApp.Model
         public void SetElement(Contact contact,int index)
         {
             if (index < 0 || index >= this.GetCount()) return;
-            this.Array[index]=contact;
+            this.Array[index]=new Contact(contact.GetFullName(), contact.GetEmail(), contact.GetPhoneNumber(), contact.GetVK(), contact.GetBirthDate()); ;
         }
 
         public void AddElement(Contact contact) 
