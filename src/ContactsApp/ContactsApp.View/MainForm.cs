@@ -10,6 +10,8 @@ namespace ContactsApp.View
 
         private Project _project;
 
+        private List<Contact> _currentContacts;
+
         private void AddButton_Click(object sender, EventArgs e)
         {
             var form = new ContactForm();
@@ -109,14 +111,48 @@ namespace ContactsApp.View
                 AddRandomContact();
             UpdateListBox();
         }
+
+        private void UpdateBDNote()
+        {
+            List<Contact> tmp = _project.FindBirthdayContacts();
+            NotedNamesLabel.Text = "";
+            if (tmp.Count > 0)
+                if (tmp.Count > 3)
+                {
+                    for (int i = 0; i < 3; i++)
+                        NotedNamesLabel.Text += tmp.ElementAt(i).GetFullName() + ", ";
+                    NotedNamesLabel.Text = NotedNamesLabel.Text.Substring(0, NotedNamesLabel.Text.Length - 2);
+                    NotedNamesLabel.Text += " and others";
+                }
+                else
+                {
+                    for (int i = 0; i < tmp.Count; i++)
+                        NotedNamesLabel.Text += tmp.ElementAt(i).GetFullName() + ", ";
+                    NotedNamesLabel.Text = NotedNamesLabel.Text.Substring(0, NotedNamesLabel.Text.Length - 2);
+                }
+
+        }
         private void UpdateListBox()
         {
-            _project.Sort(0, _project.GetCount() - 1);
-            ContactsListBox.Items.Clear();
-            for (int i = 0; i < _project.GetCount(); i++)
+            _project.Sort();
+            if (FindTextBox.Text.Length > 0)
             {
-                ContactsListBox.Items.Add(_project.GetElement(i).GetFullName());
+                ContactsListBox.Items.Clear();
+                _currentContacts = _project.FindSubstring(FindTextBox.Text);
+                for (int i = 0; i < _currentContacts.Count(); i++)
+                {
+                    ContactsListBox.Items.Add(_currentContacts.ElementAt(i).GetFullName());
+                }
             }
+            else
+            {
+                ContactsListBox.Items.Clear();
+                for (int i = 0; i < _project.GetCount(); i++)
+                {
+                    ContactsListBox.Items.Add(_project.GetElement(i).GetFullName());
+                }
+            }
+            UpdateBDNote();
         }
         private void AddRandomContact()
         {
@@ -172,10 +208,7 @@ namespace ContactsApp.View
             Contact tmp = new Contact(fullName, email, phoneNumber, vk, birthDate);
             _project.AddElement(tmp);
         }
-        private void RemoveContact()
-        {
-            _project.RemoveElement();
-        }
+
         private void RemoveContact(int index)
         {
             _project.RemoveElement(index);
@@ -203,13 +236,7 @@ namespace ContactsApp.View
         private void RemoveButton_Click(object sender, EventArgs e)
         {
             DialogResult result;
-            if (ContactsListBox.SelectedItems.Count == 0)
-            {
-                result = MessageBox.Show("Do you really want to remove last element?", "Delete", MessageBoxButtons.OKCancel);
-                if (result == DialogResult.OK) RemoveContact();
-                if (ContactsListBox.SelectedItems.Count == 0) ClearSelectedContact();
-            }
-            else
+            if (ContactsListBox.SelectedItems.Count > 0)
             {
                 string line = "Do you really want to remove";
                 for (int i = 0; i < ContactsListBox.SelectedIndices.Count; i++)
@@ -223,8 +250,8 @@ namespace ContactsApp.View
                     for (int i = ContactsListBox.SelectedIndices.Count - 1; i > -1; i--)
                         RemoveContact(ContactsListBox.SelectedIndices[i]);
                 }
+                UpdateListBox();
             }
-            UpdateListBox();
         }
 
         private void ContactsListBox_MouseDown(object sender, MouseEventArgs e)
@@ -256,8 +283,13 @@ namespace ContactsApp.View
 
         private void EditButton_Click(object sender, EventArgs e)
         {
-            if(ContactsListBox.SelectedItems.Count > 0)
+            if (ContactsListBox.SelectedItems.Count > 0)
                 EditContact(ContactsListBox.SelectedIndex);
+        }
+
+        private void FindTextBox_TextChanged(object sender, EventArgs e)
+        {
+            UpdateListBox();
         }
     }
 }

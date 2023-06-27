@@ -36,59 +36,21 @@ namespace ContactsApp.Model
             this.Array.Add(contact); 
         }
 
-        public void Sort(int low,int high)
+        public void Sort()
         {
-            if (low < 0 || high >= this.GetCount()) return;
-            if (low < high)
-            {
-                int pivot = Partition(low, high);
-                Sort(low, pivot - 1);
-                Sort(pivot + 1, high);
-            }
+            this.Array=this.Array.OrderBy(contact=>contact.GetFullName()).ToList();
         }
 
-        public int Partition(int low, int high)
+        public List<Contact> FindBirthdayContacts()
         {
-            string pivot = this.GetElement(high).GetFullName();
-            int i = low - 1;
-            Contact tmp;
-            for (int j = low; j < high; j++)
-            {
-                if (string.Compare(this.GetElement(j).GetFullName(), pivot) < 0)
-                {
-                    i++;
-                    tmp = this.GetElement(i);
-                    this.SetElement(this.GetElement(j),i);
-                    this.SetElement(tmp, j);
-                }
-            }
-            tmp = this.GetElement(i + 1);
-            this.SetElement(this.GetElement(high), i + 1);
-            this.SetElement(tmp, high);
-            return i + 1;
+            return this.Array.Where(contact=>contact.GetBirthDate()==DateTime.Today).ToList();
         }
-        //FindBirthdayContact и FindSubstring начинают поиск с start чтобы было возможно найти все подходящие контакты(например в цикле)
-        public int FindBirthdayContact(int start)
+
+        public List<Contact> FindSubstring(string substring)
         {
-            if (start < 0 || start >= this.GetCount()) return -1;
-            for (int i=start; i<this.GetCount();i++)
-            {
-                if(this.GetElement(i).GetBirthDate()==DateTime.Today)
-                    return i;
-            }
-            return -1;
+            return this.Array.Where(contact => contact.GetFullName().Contains(substring)).ToList();
         }
-        
-        public int FindSubstring(int start,string substring) 
-        {
-            if (start < 0 || start >= this.GetCount()) return -1;
-            for (int i = start; i< this.GetCount(); i++)
-            {
-                if (this.GetElement(i).GetFullName().Contains(substring))
-                    return i;
-            }
-            return -1;
-        }
+
         public void RemoveElement(int index)
         {
             if (this.Array != null && this.Array.Count > 0)
