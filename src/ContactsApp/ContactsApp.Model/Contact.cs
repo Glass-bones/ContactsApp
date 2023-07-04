@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -9,11 +10,16 @@ namespace ContactsApp.Model
 {
     public class Contact:ICloneable
     {
-        private string FullName;
-        private string Email;
-        private string PhoneNumber;
-        private string VK;
-        private DateTime BirthDate;
+        [JsonProperty("FullName")]
+        private string FullName { get; set; }
+        [JsonProperty("Email")]
+        private string Email { get; set; }
+        [JsonProperty("PhoneNumber")]
+        private string PhoneNumber { get; set; }
+        [JsonProperty("VK")]
+        private string VK { get; set; }
+        [JsonProperty("BirthDate")]
+        private DateTime BirthDate { get; set; }
         public void SetFullName(string fullName)
         {
             if (fullName.Length > 100) throw new ArgumentException();

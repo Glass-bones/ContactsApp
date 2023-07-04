@@ -304,7 +304,6 @@
             PhoneTextBox.Name = "PhoneTextBox";
             PhoneTextBox.Size = new Size(180, 23);
             PhoneTextBox.TabIndex = 6;
-            PhoneTextBox.Text = "+7 (000) 000-00-00";
             PhoneTextBox.KeyPress += PhoneTextBox_KeyPress;
             // 
             // PhoneLabel
@@ -324,7 +323,6 @@
             EmailTextBox.Name = "EmailTextBox";
             EmailTextBox.Size = new Size(432, 23);
             EmailTextBox.TabIndex = 4;
-            EmailTextBox.Text = "chain.lightning@no.mail";
             EmailTextBox.KeyPress += EmailTextBox_KeyPress;
             // 
             // EmailLabel
@@ -344,7 +342,6 @@
             FullNameTextBox.Name = "FullNameTextBox";
             FullNameTextBox.Size = new Size(432, 23);
             FullNameTextBox.TabIndex = 2;
-            FullNameTextBox.Text = "Солмир Джафарович";
             FullNameTextBox.KeyPress += FullNameTextBox_KeyPress;
             // 
             // NameLabel

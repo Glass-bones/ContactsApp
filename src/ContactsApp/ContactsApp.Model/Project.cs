@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
@@ -10,7 +11,8 @@ namespace ContactsApp.Model
 {
     public class Project
     {
-        private List<Contact> Array;
+        [JsonProperty("id")]
+        private List<Contact> Array { get; set; }
 
         public Contact GetElement(int index)
         {
@@ -20,7 +22,8 @@ namespace ContactsApp.Model
 
         public int GetCount() 
         { 
-            return this.Array.Count; 
+            if(this.Array==null) return 0;
+            return this.Array.Count;
         }
 
         public void SetElement(Contact contact,int index)

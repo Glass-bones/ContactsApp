@@ -1,4 +1,6 @@
 using ContactsApp.Model;
+using System.Text.Json.Serialization;
+
 namespace ContactsApp.View
 {
     public partial class MainForm : Form
@@ -9,6 +11,7 @@ namespace ContactsApp.View
         }
 
         private Project _project;
+        private ProjectSerializer _projectSerializer;
 
         private List<Contact> _currentContacts;
 
@@ -18,7 +21,6 @@ namespace ContactsApp.View
             DialogResult result = form.ShowDialog();
             if (result == DialogResult.OK)
             {
-                AddRandomContact();
                 _project.AddElement(form.GetContact());
                 UpdateListBox();
             }
@@ -106,9 +108,11 @@ namespace ContactsApp.View
 
         private void MainForm_Load(object sender, EventArgs e)
         {
-            _project = new Project();
-            for (int i = 0; i < 5; i++)
-                AddRandomContact();
+            _projectSerializer = new ProjectSerializer();
+            _project = _projectSerializer.LoadFromFile();
+            if (_project.GetCount() == 0)
+                for (int i = 0; i < 5; i++)
+                    AddRandomContact();
             UpdateListBox();
         }
 
@@ -262,9 +266,11 @@ namespace ContactsApp.View
 
         private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
         {
-            DialogResult result = MessageBox.Show("Do you want to exit?", "Confirm Exit", MessageBoxButtons.YesNo);
+            UpdateListBox();
+            DialogResult result = MessageBox.Show("Do you want to exit?", "Confirm exit", MessageBoxButtons.YesNo);
             if (result == DialogResult.No)
                 e.Cancel = true;
+            else _projectSerializer.SaveToFile(_project);
         }
 
         private void EditContact(int index)
