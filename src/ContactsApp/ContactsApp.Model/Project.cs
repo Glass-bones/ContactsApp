@@ -28,13 +28,14 @@ namespace ContactsApp.Model
 
         public void SetElement(Contact contact,int index)
         {
-            if (index < 0 || index >= this.GetCount()) return;
-            this.Array[index]=new Contact(contact.GetFullName(), contact.GetEmail(), contact.GetPhoneNumber(), contact.GetVK(), contact.GetBirthDate()); ;
+
+            if (index < 0 || index >= this.GetCount() || contact == null) throw new ArgumentException();
+            this.Array[index]=new Contact(contact.GetFullName(), contact.GetEmail(), contact.GetPhoneNumber(), contact.GetVK(), contact.GetBirthDate());
         }
 
         public void AddElement(Contact contact) 
-        { 
-            if (contact == null) return;
+        {
+            if (contact == null) throw new ArgumentException();
             if (this.Array==null) this.Array = new List<Contact>();
             this.Array.Add(contact); 
         }
@@ -56,7 +57,7 @@ namespace ContactsApp.Model
 
         public void RemoveElement(int index)
         {
-            if (this.Array != null && this.Array.Count > 0)
+            if (this.Array != null && this.Array.Count > index)
                 this.Array.RemoveAt(index);
         }
         public void RemoveElement()

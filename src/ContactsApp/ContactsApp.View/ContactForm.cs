@@ -56,8 +56,8 @@ namespace ContactsApp.View
 
         private void FullNameTextBox_TextChanged(object sender, EventArgs e)
         {
-            if (FullNameTextBox.Text.Length <= 0) return;
-            else
+            if (FullNameTextBox.Text.Length == 0) _contact.SetFullName("");
+            if(FullNameTextBox.Text.Length > 0)
             {
                 if (char.IsLower(Convert.ToChar(FullNameTextBox.Text.Substring(0, 1))))
                 {
