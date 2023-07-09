@@ -32,7 +32,7 @@ namespace ContactsApp.Model
         }
         public void SetPhoneNumber(string phoneNumber) 
         {
-            if (!Regex.IsMatch(phoneNumber, "^((8|\\+7)[\\- ]?)?(\\(?\\d{3}\\)?[\\- ]?)?[\\d\\- ]{7,10}$"))
+            if (!Regex.IsMatch(phoneNumber, @"^[0-9()+\- ]+$"))
                 throw new ArgumentException();
             else this.PhoneNumber = phoneNumber;
         }
@@ -55,7 +55,14 @@ namespace ContactsApp.Model
             this.SetVK(vk);
             this.SetBirthDate(birthDate);
         }
-
+        public Contact()
+        {
+            this.SetFullName("");
+            this.SetEmail("");
+            this.SetPhoneNumber("+");
+            this.SetVK("");
+            this.SetBirthDate(DateTime.Today);
+        }
         public object Clone()
         {
             return new Contact(this.GetFullName(),this.GetEmail(), this.GetPhoneNumber(), this.GetVK(), this.GetBirthDate());

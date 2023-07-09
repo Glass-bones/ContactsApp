@@ -3,9 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.5.33516.290
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ContactsApp.View", "ContactsApp.View\ContactsApp.View.csproj", "{8A11B2A8-3BDE-4BC7-A641-152561CF8023}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ContactsApp.View", "ContactsApp.View\ContactsApp.View.csproj", "{8A11B2A8-3BDE-4BC7-A641-152561CF8023}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ContactsApp.Model", "ContactsApp.Model\ContactsApp.Model.csproj", "{70A014F7-D819-477B-BC94-37C3916A2805}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Testing", "Testing", "{1B27E6C6-4F71-4485-B5E9-D5F1E25EDFAE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ontactsApp.Model.UnitTests", "Testing\ontactsApp.Model.UnitTests\ontactsApp.Model.UnitTests.csproj", "{932A6BE7-D7B0-46DE-8B89-4B5320BC208B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,9 +25,16 @@ Global
 		{70A014F7-D819-477B-BC94-37C3916A2805}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{70A014F7-D819-477B-BC94-37C3916A2805}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{70A014F7-D819-477B-BC94-37C3916A2805}.Release|Any CPU.Build.0 = Release|Any CPU
+		{932A6BE7-D7B0-46DE-8B89-4B5320BC208B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{932A6BE7-D7B0-46DE-8B89-4B5320BC208B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{932A6BE7-D7B0-46DE-8B89-4B5320BC208B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{932A6BE7-D7B0-46DE-8B89-4B5320BC208B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{932A6BE7-D7B0-46DE-8B89-4B5320BC208B} = {1B27E6C6-4F71-4485-B5E9-D5F1E25EDFAE}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {4D1BF0CA-BA0E-42AD-9A03-A63693074239}
