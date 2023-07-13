@@ -11,6 +11,13 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Testing", "Testing", "{1B27
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ontactsApp.Model.UnitTests", "Testing\ontactsApp.Model.UnitTests\ontactsApp.Model.UnitTests.csproj", "{932A6BE7-D7B0-46DE-8B89-4B5320BC208B}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "install", "install", "{B19BE05E-11C3-44C1-BCB0-25FB7F587B63}"
+	ProjectSection(SolutionItems) = preProject
+		install\ContactsAppSetupMaker.iss = install\ContactsAppSetupMaker.iss
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Output", "Output", "{32B6C66D-5195-412F-93CD-E4C7A9AB20DE}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -35,6 +42,7 @@ Global
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{932A6BE7-D7B0-46DE-8B89-4B5320BC208B} = {1B27E6C6-4F71-4485-B5E9-D5F1E25EDFAE}
+		{32B6C66D-5195-412F-93CD-E4C7A9AB20DE} = {B19BE05E-11C3-44C1-BCB0-25FB7F587B63}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {4D1BF0CA-BA0E-42AD-9A03-A63693074239}

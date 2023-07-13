@@ -47,7 +47,8 @@ namespace ContactsApp.Model
 
         public List<Contact> FindBirthdayContacts()
         {
-            return this.Array.Where(contact=>contact.GetBirthDate()==DateTime.Today).ToList();
+            return this.Array.Where(contact=>contact.GetBirthDate().Day==DateTime.Today.Day&&contact.GetBirthDate().Month == DateTime.Today.Month).ToList();
+            //Именинникам теперь не проверяют значение года рождения
         }
 
         public List<Contact> FindSubstring(string substring)
